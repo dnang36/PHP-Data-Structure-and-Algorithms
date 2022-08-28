@@ -14,8 +14,11 @@ function linearSearch($arr, $x) {
 
 //$arr = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,
 //    41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
+
 $arr= range(1,1000000);
-$value = 10000;
+
+shuffle($arr);
+$value = -1;
 if (linearSearch($arr,$value)==true){
     echo $value. "tim thay\n";
 }

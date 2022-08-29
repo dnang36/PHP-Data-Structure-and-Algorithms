@@ -9,9 +9,6 @@ Download code và run code tại đường dẫn https://github.com/dnang36/PHP-
 ## Data Structure
 ## 1. Khái niệm:
 - Cấu trúc dữ liệu là cách lưu trữ, tổ chức dữ liệu có thứ tự, có hệ thống để dữ liệu có thể được sử dụng một cách hiệu quả.
-   - Giao diện (Interface): Giao diện đại diện cho tập hợp các thao tác mà một cấu trúc hỗ trợ.
-   - Triển khai (Implementation): Việc triển khai nhằm cung cấp các định nghĩa của thuật toán.
-   - Dữ liệu (Data): Dữ liệu có thể được định nghĩa là một giá trị cơ bản hoặc tập hợp các giá trị, ví dụ như tên của sinh viên.
 - Đặc điểm của cấu trúc dữ liệu:
    - Tính đúng đắn: Việc triển khai cấu trúc dữ liệu phải triển khai đúng giao diện của nó.
    - Độ phức tạp về thời gian: Thời gian chạy hoặc thời gian thực thi phải đạt ở mức thấp nhất có thể.
@@ -128,5 +125,19 @@ Download code và run code tại đường dẫn https://github.com/dnang36/PHP-
 - Giải thuật này không thích hợp sử dụng với các tập dữ liệu lớn khi mà độ phức tạp trường hợp xấu nhất và trường hợp trung bình là Ο(n2) với n là số phần tử.
 - Giải thuật sắp xếp nổi bọt là giải thuật chậm nhất trong số các giải thuật sắp xếp cơ bản. Giải thuật này còn chậm hơn giải thuật đổi chỗ trực tiếp mặc dù số lần so sánh bằng nhau, nhưng do đổi chỗ hai phần tử kề nhau nên số lần đổi chỗ nhiều hơn.
 ### Sắp xếp chèn (Insertion Sort)
-
-
+- Thuật toán sắp xếp chèn thực hiện sắp xếp dãy số theo cách duyệt từng phần tử và chèn từng phần tử đó vào đúng vị trí trong mảng con(dãy số từ đầu đến phần tử phía trước nó) đã sắp xếp sao cho dãy số trong mảng sắp đã xếp đó vẫn đảm bảo tính chất của một dãy số tăng dần.
+  - Khởi tạo mảng với dãy con đã sắp xếp có k = 1 phần tử(phần tử đầu tiên, phần tử có chỉ số 0)
+  - Duyệt từng phần tử từ phần tử thứ 2, tại mỗi lần duyệt phần tử ở chỉ số i thì đặt phần tử đó vào một vị trí nào đó trong đoạn từ [0…i] sao cho dãy số từ [0…i] vẫn đảm bảo tính chất dãy số tăng dần. Sau mỗi lần duyệt, số phần tử đã được sắp xếp k trong mảng tăng thêm 1 phần tử.
+  - Lặp cho tới khi duyệt hết tất cả các phần tử của mảng.
+- Độ  phức tạp thuật toán : Trường hợp tốt: O(n), Trung bình: O(n^2), Trường hợp xấu: O(n^2), Không gian bộ nhớ sử dụng: O(1)
+### Sắp xếp chọn (Selection Sort)
+- Thuật toán selection sort sắp xếp một mảng bằng cách đi tìm phần tử có giá trị nhỏ nhất(giả sử với sắp xếp mảng tăng dần) trong đoạn đoạn chưa được sắp xếp và đổi cho phần tử nhỏ nhất đó với phần tử ở đầu đoạn chưa được sắp xếp(không phải đầu mảng). Thuật toán sẽ chia mảng làm 2 mảng con
+  - Một mảng con đã được sắp xếp
+  - Một mảng con chưa được sắp xếp
+- Tại mỗi bước lặp của thuật toán, phần tử nhỏ nhất ở mảng con chưa được sắp xếp sẽ được di chuyển về đoạn đã sắp xếp.
+- Độ  phức tạp thuật toán : Trường hợp tốt: O(n), Trung bình: O(n^2), Trường hợp xấu: O(n^2), Không gian bộ nhớ sử dụng: O(1)
+### Sắp xếp trộn (Merge Sort)
+- Merge Sort hay thuật toán sắp xếp trộn là một trong những thuật toán sắp xếp phổ biến nhất dựa trên nguyên tắc của thuật toán chia để trị. Ở đây, một bài toán được chia thành nhiều bài toán con. Mỗi vấn đề con được giải quyết một cách riêng lẻ. Cuối cùng, các vấn đề con sẽ được kết hợp để tạo thành giải pháp cuối cùng cho bài toán.
+### sắp xếp nhanh (Quick Sort)
+- Giải thuật sắp xếp nhanh (Quick Sort) là một giải thuật hiệu quả cao và dựa trên việc chia mảng dữa liệu thành các mảng nhỏ hơn. Giải thuật sắp xếp nhanh chia mảng thành hai phần bằng cách so sánh từng phần tử của mảng với một phần tử được chọn gọi là phần tử chốt (Pivot): một mảng bao gồm các phần tử nhỏ hơn hoặc bằng phần tử chốt và mảng còn lại bao gồm các phần tử lớn hơn hoặc bằng phần tử chốt.
+- Tiến trình chia này diễn ra tiếp tục cho tới khi độ dài của các mảng con đều bằng 1. Giải thuật sắp xếp nhanh tỏ ra khá hiệu quả với các tập dữ liệu lớn khi mà độ phức tạp trường hợp trung bình và trường hợp xấu nhất là O(nlogn) với n là số phần tử.

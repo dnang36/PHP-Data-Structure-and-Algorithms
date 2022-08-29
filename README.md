@@ -27,7 +27,8 @@ Download code và run code tại đường dẫn https://github.com/dnang36/PHP-
 2. Các kiểu cấu trúc dữ liệu:<br>
 
 ## 2.1. Mảng:
-- Mảng là một cấu trúc có kích thước cố định, có thể chứa các phần tử có cùng kiểu dữ liệu. Nó có thể là một mảng số nguyên, một mảng số thực, một mảng chuỗi ký tự hoặc thậm chí một mảng chứa các mảng con (chẳng hạn như mảng 2 chiều). Mảng có sử dụng chỉ số, có nghĩa là có thể truy cập ngẫu nhiên.
+- Mảng trong PHP hay Array PHP là một kiểu cấu trúc dữ liệu cho phép bạn lưu trữ nhiều phần tử của kiểu dữ liệu tương tự nhau dưới một biến duy nhất.
+- Có 3 loại mảng khác nhau trong PHP: Mảng chỉ số, Mảng kết hợp, Mảng đa chiều.
 - Các thao tác với mảng:
   - Duyệt phần tử: Đi qua các phần tử.
   - Tìm kiếm: Tìm kiếm một phần tử trong mảng. Bạn có thể tìm kiếm phần tử theo giá trị của nó hoặc chỉ số của nó

@@ -17,7 +17,7 @@ function binarySearch(Array $arr, $x){
             echo "vi tri trong mang la ".$mid."\n";
             return true;
         }
-        elseif ($arr[$mid]<$x){
+        else if ($arr[$mid]<$x){
             $left = $mid +1;
         }
         else{

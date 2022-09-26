@@ -281,11 +281,11 @@ print_array($array);//output: 1 5 12 21 32 43 65 78
 - Tại mỗi bước lặp của thuật toán, phần tử nhỏ nhất ở mảng con chưa được sắp xếp sẽ được di chuyển về đoạn đã sắp xếp.
 - Độ  phức tạp thuật toán : Trường hợp tốt: O(n), Trung bình: O(n^2), Trường hợp xấu: O(n^2), Không gian bộ nhớ sử dụng: O(1)
 
-  <details>
-  <summary>Demo</summary>
+<details>
+<summary>Demo</summary>
 
 
-   ```php 
+```php 
 function selectionSort($mang)
 {
     // Đếm tổng số phần tử của mảng
@@ -321,12 +321,20 @@ function xuat_mang_ra_man_hinh($mang)
         echo $mang[$i] . ",";
     }
 }
+function print_array ($array)
+{
+foreach ($array as $val)
+{
+echo $val . " ";
+}
+}
 
-$mang = [19, 24, 12, 12, 45, 67, 23];
-selectionSort($array, "DES");
-xuat_mang_ra_man_hinh($mang);// 67 45 24 23 19 12 12
- ```
-  </details>
+$array = [21,43,12,5,65,32,78,1];
+selectionSort($array);
+print_array($array);//output: 1 5 12 21 32 43 65 78
+```
+
+</details>
 
 ### Sắp xếp trộn (Merge Sort)
 - Merge Sort hay thuật toán sắp xếp trộn là một trong những thuật toán sắp xếp phổ biến nhất dựa trên nguyên tắc của thuật toán chia để trị. Ở đây, một bài toán được chia thành nhiều bài toán con. Mỗi vấn đề con được giải quyết một cách riêng lẻ. Cuối cùng, các vấn đề con sẽ được kết hợp để tạo thành giải pháp cuối cùng cho bài toán.

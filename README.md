@@ -106,6 +106,28 @@ Download code và run code tại đường dẫn https://github.com/dnang36/PHP-
 ### 2.1.1. Linear Search
 - Linear Search là một giải thuật tìm kiếm rất cơ bản. Trong kiểu tìm kiếm này, một hoạt động tìm kiếm liên tiếp được diễn ra qua tất cả từng phần tử. Mỗi phần tử đều được kiểm tra và nếu tìm thấy bất kỳ kết nối nào thì phần tử cụ thể đó được trả về; nếu không tìm thấy thì quá trình tìm kiếm tiếp tục diễn ra cho tới khi tìm kiếm hết dữ liệu.
 - Đánh giá: Mặc dù giải thuật Tìm kiếm tuần tự rất đơn giản và dễ cài đặt, tuy nhiên nhược điểm của nó nằm ở độ phức tạp. Trong trường hợp tốt nhất, giải thuật có độ phức tạp là O(1),O(1), nhưng trong trường hợp xấu nhất lên tới O(n)O(n). Vì vậy độ phức tạp tổng quát của giải thuật là O(n),O(n), chỉ phù hợp với những bài toán có kích thước không gian tìm kiếm nhỏ.
+
+<details>
+<summary>Demo</summary>
+
+```php
+function linearSearch($arr, $x) {
+    for ($i = 0; $i < count($arr); $i++) {
+        if($arr[$i] == $x) {
+            echo "vi tri trong mang la ".$i."\n";
+            return $i + 1;
+        }
+    }
+    return 0;
+}
+$array = [12,23,43,12,24,343,545];
+$result = linearSearch($array,12);
+echo $result;// output: 0
+```
+
+
+</details>
+
 ### 2.1.2. Binary Search
 
 - Thụât toán tìm kiếm nhị phân (Binary Search) hay còn được gọi là tìm kiếm một nửa là thụât toán tiếp kiếm được sử dụng rất nhiều trong thực tế cho phép tìm kiếm vị trí của một phần tử trong một mảng đã được sắp xếp.
@@ -119,24 +141,193 @@ Download code và run code tại đường dẫn https://github.com/dnang36/PHP-
   - Tiếp tục thực hiện chia đôi các khoảng tìm kiếm tới khi nào tìm thấy được vị trí của x trong mảng hoặc khi đã duyệt hết mảng.
 - Người ta đã chứng minh được độ phực tạp của thụât toán tìm kiếm nhi phân trong trường hợp tốt nhất là O(1), trong trường hợp xấu nhất là O(log2n) và trung bình cũng là O(log2n). Tuy nhiên, ta không nên quên rằng trước khi sử dụng tìm kiếm nhị phân, dãy khoá phải được sắp xếp rồi, tức là thời gian chi phí cho việc sắp xếp cũng phải tính đến.
 
+<details>
+<summary>Demo</summary>
+
+````php 
+ function binarySearch(Array $arr, $x){
+    if(count($arr)===0) return false;
+
+    $left = 0;
+    $right = count($arr) - 1 ;
+
+    while ($left<=$right){
+        $mid = floor(($right+$left)/2);
+
+        if($arr[$mid]==$x) {
+            echo "vi tri trong mang la ".$mid."\n";
+            return true;
+        }
+        else if ($arr[$mid]<$x){
+            $left = $mid +1;
+        }
+        else{
+            $right = $mid -1 ;
+        }
+    }
+    return false;
+}
+$array = [1,23,45,67,78,90];
+$result = binarySearch($array,23)
+echo $result;//output: 1
+````
+</details>
+
 ## 2.2. Sorting:
 
 ### Sắp xếp nổi bọt (Bubble sort)
 - Sắp xếp nổi bọt là một giải thuật sắp xếp đơn giản. Giải thuật sắp xếp này được tiến hành dựa trên việc so sánh cặp phần tử liền kề nhau và tráo đổi thứ tự nếu chúng không theo thứ tự.
 - Giải thuật này không thích hợp sử dụng với các tập dữ liệu lớn khi mà độ phức tạp trường hợp xấu nhất và trường hợp trung bình là Ο(n2) với n là số phần tử.
 - Giải thuật sắp xếp nổi bọt là giải thuật chậm nhất trong số các giải thuật sắp xếp cơ bản. Giải thuật này còn chậm hơn giải thuật đổi chỗ trực tiếp mặc dù số lần so sánh bằng nhau, nhưng do đổi chỗ hai phần tử kề nhau nên số lần đổi chỗ nhiều hơn.
+
+<details>
+<summary>Demo</summary>
+
+```php
+function print_array($mang)
+{
+    foreach ($mang as $val)
+    {
+        echo $val . " ";
+    }
+}
+
+function bubleSort($mang)
+{
+    $sophantu = count($mang);
+    // Sắp xếp mảng
+    for ($i = 0; $i < ($sophantu - 1); $i++)
+    {
+        for ($j = $i + 1; $j < $sophantu; $j++)
+        {
+            if ($mang[$i] > $mang[$j])
+            {
+                // hoán vị
+                $tmp = $mang[$j];
+                $mang[$j] = $mang[$i];
+                $mang[$i] = $tmp;
+            }
+        }
+    }
+    return $mang;
+}
+$mang = [12,4,1,32,19,34];
+bubleSort($mang);
+print_array($mang);//output: 1 4 12 19 32 34
+```
+</details>
+
 ### Sắp xếp chèn (Insertion Sort)
 - Thuật toán sắp xếp chèn thực hiện sắp xếp dãy số theo cách duyệt từng phần tử và chèn từng phần tử đó vào đúng vị trí trong mảng con(dãy số từ đầu đến phần tử phía trước nó) đã sắp xếp sao cho dãy số trong mảng sắp đã xếp đó vẫn đảm bảo tính chất của một dãy số tăng dần.
   - Khởi tạo mảng với dãy con đã sắp xếp có k = 1 phần tử(phần tử đầu tiên, phần tử có chỉ số 0)
   - Duyệt từng phần tử từ phần tử thứ 2, tại mỗi lần duyệt phần tử ở chỉ số i thì đặt phần tử đó vào một vị trí nào đó trong đoạn từ [0…i] sao cho dãy số từ [0…i] vẫn đảm bảo tính chất dãy số tăng dần. Sau mỗi lần duyệt, số phần tử đã được sắp xếp k trong mảng tăng thêm 1 phần tử.
   - Lặp cho tới khi duyệt hết tất cả các phần tử của mảng.
 - Độ  phức tạp thuật toán : Trường hợp tốt: O(n), Trung bình: O(n^2), Trường hợp xấu: O(n^2), Không gian bộ nhớ sử dụng: O(1)
+
+<details>
+<summary>Demo</summary>
+
+
+```php 
+function insertionSort($mang)  {
+    // Tổng số phần tử
+    $sophantu = count($mang);
+
+    // Lặp qua từng phần tử của mảng để sắp xếp
+    for ($i = 0; $i < $sophantu; $i++)
+    {
+        // Lặp từ phần tử thứ $i, ví dụ $i = 6
+        // thì sẽ lặp từ phần tử số 6 trở về 0 để kiểm tra
+        $loop = $i;
+
+        // Lưu lại giá trị của $mang[$i] để khỏi bị mất
+        $current = $mang[$i];
+
+        // điều kiện dừng là $loop <= 0 (tức là hết mảng) hoặc
+        // phần tử thứ $loop - 1 bé hơn phần tử thứ $i (vì đã tìm đc đúng vị trí)
+        // nếu một trong 2 điều kiện đó đúng thì sẽ dừng vòng lặp
+        while($loop > 0 && ($mang[$loop - 1] > $current))
+        {
+            // Di dời các phần tử lên 1 bậc
+            $mang[$loop] = $mang[$loop - 1];
+            $loop -= 1;
+        }
+
+        // Gán giá trị $current vào vị trí tìm được
+        $mang[$loop] = $current;
+    }
+
+    return $mang;
+}
+function print_array ($array)
+{
+foreach ($array as $val)
+{
+echo $val . " ";
+}
+}
+
+$array = [21,43,12,5,65,32,78,1];
+insertionSort($array);
+print_array($array);//output: 1 5 12 21 32 43 65 78
+```
+
+</details>
+
 ### Sắp xếp chọn (Selection Sort)
 - Thuật toán selection sort sắp xếp một mảng bằng cách đi tìm phần tử có giá trị nhỏ nhất(giả sử với sắp xếp mảng tăng dần) trong đoạn đoạn chưa được sắp xếp và đổi cho phần tử nhỏ nhất đó với phần tử ở đầu đoạn chưa được sắp xếp(không phải đầu mảng). Thuật toán sẽ chia mảng làm 2 mảng con
   - Một mảng con đã được sắp xếp
   - Một mảng con chưa được sắp xếp
 - Tại mỗi bước lặp của thuật toán, phần tử nhỏ nhất ở mảng con chưa được sắp xếp sẽ được di chuyển về đoạn đã sắp xếp.
 - Độ  phức tạp thuật toán : Trường hợp tốt: O(n), Trung bình: O(n^2), Trường hợp xấu: O(n^2), Không gian bộ nhớ sử dụng: O(1)
+
+  <details>
+  <summary>Demo</summary>
+
+
+   ```php 
+function selectionSort($mang)
+{
+    // Đếm tổng số phần tử của mảng
+    $sophantu = count($mang);
+
+    // Lặp để sắp xếp
+    for ($i = 0; $i < $sophantu - 1; $i++)
+    {
+        // Tìm vị trí phần tử nhỏ nhất
+        $min = $i;
+        for ($j = $i + 1; $j < $sophantu; $j++){
+            if ($mang[$j] < $mang[$min]){
+                $min = $j;
+            }
+        }
+
+        // Sau khi có vị trí nhỏ nhất thì hoán vị
+        // với vị trí thứ $i
+        $temp = $mang[$i];
+        $mang[$i] = $mang[$min];
+        $mang[$min] = $temp;
+    }
+
+    // Trả về mảng đã sắp xếp
+    return $mang;
+}
+
+// Hàm xuất ra màn hình
+function xuat_mang_ra_man_hinh($mang)
+{
+    $sophantu = count($mang);
+    for ($i = 0; $i < $sophantu; $i++){
+        echo $mang[$i] . ",";
+    }
+}
+
+$mang = [19, 24, 12, 12, 45, 67, 23];
+selectionSort($array, "DES");
+xuat_mang_ra_man_hinh($mang);// 67 45 24 23 19 12 12
+ ```
+  </details>
+
 ### Sắp xếp trộn (Merge Sort)
 - Merge Sort hay thuật toán sắp xếp trộn là một trong những thuật toán sắp xếp phổ biến nhất dựa trên nguyên tắc của thuật toán chia để trị. Ở đây, một bài toán được chia thành nhiều bài toán con. Mỗi vấn đề con được giải quyết một cách riêng lẻ. Cuối cùng, các vấn đề con sẽ được kết hợp để tạo thành giải pháp cuối cùng cho bài toán.
 ### sắp xếp nhanh (Quick Sort)
